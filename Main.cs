@@ -1,4 +1,7 @@
-﻿using MelonLoader;
+﻿using System;
+using System.IO;
+using MelonLoader;
+using Mu3Assist.Fix;
 
 namespace Mu3Assist
 {
@@ -14,15 +17,56 @@ namespace Mu3Assist
 
     public class Mu3Assist : MelonMod
     {
+        public readonly ConfigManager Config = new ConfigManager();
         public override void OnInitializeMelon()
         {
             PrintLogo();
-            MelonLogger.Msg("OnApplicationStart");
+            
+            MelonLogger.Msg("Load Mod Config.");
+            var configPath = $"{BuildInfo.Name}/config.ini";
+            if (!File.Exists(configPath))
+            {
+                MelonLogger.Error($"Path: \"{configPath}\" Not Found.");
+                return;
+            }
+
+            try
+            {
+                Config.initialize();
+            }
+            catch (Exception e)
+            {
+                MelonLogger.Error($"Error initializing mod config: \n{e}");
+            }
+            
+            
+            //Patch
+            // [Fix]
+            if (Config.DisableEncryption) Patch(typeof(DisableEncryption));
+            
+            
+            MelonLogger.Msg("Loading completed");
         }
 
         public override void OnGUI()
         {
 
+        }
+        
+        private static bool Patch(Type type)
+        {
+            try
+            {
+                MelonLogger.Msg($"- Patch: {type}");
+                HarmonyLib.Harmony.CreateAndPatchAll(type);
+                return true;
+            }
+            catch (Exception e)
+            {
+                MelonLogger.Error($"Patch {type} failed.");
+                MelonLogger.Error(e.StackTrace);
+                return false;
+            }
         }
 
         private static void PrintLogo()
