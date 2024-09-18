@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using MelonLoader;
+using Mu3Assist.Cheat;
 using Mu3Assist.Fix;
 
 namespace Mu3Assist
@@ -41,6 +42,10 @@ namespace Mu3Assist
             
             
             //Patch
+            
+            // [Cheat]
+            if (Config.UnlockMaster) Patch(typeof(UnlockMaster));
+            
             // [Fix]
             if (Config.DisableEncryption) Patch(typeof(DisableEncryption));
             
@@ -64,7 +69,7 @@ namespace Mu3Assist
             catch (Exception e)
             {
                 MelonLogger.Error($"Patch {type} failed.");
-                MelonLogger.Error(e.StackTrace);
+                MelonLogger.Error(e);
                 return false;
             }
         }
