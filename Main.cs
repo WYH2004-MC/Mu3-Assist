@@ -48,6 +48,7 @@ namespace Mu3Assist
             // [Cheat]
             if (Config.UnlockMaster) Patch(typeof(UnlockMaster));
             if (Config.UnlockEvent) Patch(typeof(UnlockEvent));
+            if (Config.UnlockMusic) Patch(typeof(UnlockMusic));
             
             // [Fix]
             if (Config.DisableEncryption) Patch(typeof(DisableEncryption));
