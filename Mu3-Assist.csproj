@@ -101,6 +101,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cheat\UnlockEvent.cs" />
     <Compile Include="Cheat\UnlockMaster.cs" />
     <Compile Include="Common\InfinityTimer.cs" />
     <Compile Include="Common\ShowFPS.cs" />

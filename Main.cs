@@ -47,6 +47,7 @@ namespace Mu3Assist
             
             // [Cheat]
             if (Config.UnlockMaster) Patch(typeof(UnlockMaster));
+            if (Config.UnlockEvent) Patch(typeof(UnlockEvent));
             
             // [Fix]
             if (Config.DisableEncryption) Patch(typeof(DisableEncryption));

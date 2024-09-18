@@ -10,6 +10,7 @@ namespace Mu3Assist
         
         // [Cheat]
         public bool UnlockMaster { get; private set; }
+        public bool UnlockEvent  { get; private set; }
 
         // [Fix]
         public bool DisableEncryption { get; private set; }
@@ -24,6 +25,7 @@ namespace Mu3Assist
             
             // [Cheat]
             UnlockMaster = iniFile.GetBool("Cheat", "UnlockMaster", false);
+            UnlockEvent = iniFile.GetBool("Cheat", "UnlockEvent", false);
             
             // [Fix]
             DisableEncryption = iniFile.GetBool("Fix", "DisableEncryption", false);
