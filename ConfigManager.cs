@@ -5,7 +5,7 @@ namespace Mu3Assist
     public class ConfigManager
     {
         // [Common]
-        
+        public bool InfinityTimer {get; private set; }
         
         // [Cheat]
         public bool UnlockMaster { get; private set; }
@@ -16,6 +16,9 @@ namespace Mu3Assist
         public void initialize()
         {
             var iniFile = new IniFile($"{BuildInfo.Name}/Config.ini");
+            
+            // [Common]
+            InfinityTimer = iniFile.GetBool("Common", "InfinityTimer", false);
             
             // [Cheat]
             UnlockMaster = iniFile.GetBool("Cheat", "UnlockMaster", false);

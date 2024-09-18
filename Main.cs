@@ -2,6 +2,7 @@
 using System.IO;
 using MelonLoader;
 using Mu3Assist.Cheat;
+using Mu3Assist.Common;
 using Mu3Assist.Fix;
 
 namespace Mu3Assist
@@ -40,8 +41,9 @@ namespace Mu3Assist
                 MelonLogger.Error($"Error initializing mod config: \n{e}");
             }
             
-            
             //Patch
+            // [Common]
+            if (Config.InfinityTimer) Patch(typeof(InfinityTimer));
             
             // [Cheat]
             if (Config.UnlockMaster) Patch(typeof(UnlockMaster));
@@ -55,7 +57,6 @@ namespace Mu3Assist
 
         public override void OnGUI()
         {
-
         }
         
         private static bool Patch(Type type)
