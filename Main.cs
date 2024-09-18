@@ -57,6 +57,7 @@ namespace Mu3Assist
 
         public override void OnGUI()
         {
+            if(Config.ShowFPS) ShowFPS.OnGUI();
         }
         
         private static bool Patch(Type type)
