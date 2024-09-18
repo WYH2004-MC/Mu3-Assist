@@ -375,5 +375,7 @@ Output
 /.idea/.idea.Mu3-Assist.dir/.idea
 /packages
 /PostBuild.bat
-/Libs
+/Libs/AMDaemon.NET.dll
+/Libs/Assembly-CSharp.dll
+/Libs/Assembly-CSharp-firstpass.dll
 /.run
