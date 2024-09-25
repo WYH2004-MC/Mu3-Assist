@@ -101,6 +101,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cheat\FastRestart.cs" />
     <Compile Include="Cheat\FastSkip.cs" />
     <Compile Include="Cheat\UnlockEvent.cs" />
     <Compile Include="Cheat\UnlockMaster.cs" />

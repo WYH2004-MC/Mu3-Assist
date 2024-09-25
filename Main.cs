@@ -34,7 +34,7 @@ namespace Mu3Assist
 
             try
             {
-                Config.initialize();
+                Config.Initialize();
             }
             catch (Exception e)
             {
@@ -47,6 +47,7 @@ namespace Mu3Assist
             
             // [Cheat]
             if (Config.FastSkip) Patch(typeof(FastSkip));
+            if (Config.FastRestart) Patch(typeof(FastRestart));
             if (Config.UnlockMaster) Patch(typeof(UnlockMaster));
             if (Config.UnlockEvent) Patch(typeof(UnlockEvent));
             if (Config.UnlockMusic) Patch(typeof(UnlockMusic));

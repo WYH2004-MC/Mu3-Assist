@@ -10,6 +10,7 @@ namespace Mu3Assist
         
         // [Cheat]
         public bool FastSkip {get; private set; }
+        public bool FastRestart { get; private set; }
         public bool UnlockMaster { get; private set; }
         public bool UnlockEvent { get; private set; }
         public bool UnlockMusic { get; private set; }
@@ -17,7 +18,7 @@ namespace Mu3Assist
         // [Fix]
         public bool DisableEncryption { get; private set; }
         
-        public void initialize()
+        public void Initialize()
         {
             var iniFile = new IniFile($"{BuildInfo.Name}/Config.ini");
             
@@ -27,6 +28,7 @@ namespace Mu3Assist
             
             // [Cheat]
             FastSkip = iniFile.GetBool("Cheat", "FastSkip", false);
+            FastRestart = iniFile.GetBool("Cheat", "FastRestart", false);
             UnlockMaster = iniFile.GetBool("Cheat", "UnlockMaster", false);
             UnlockEvent = iniFile.GetBool("Cheat", "UnlockEvent", false);
             UnlockMusic = iniFile.GetBool("Cheat", "UnlockMusic", false);
