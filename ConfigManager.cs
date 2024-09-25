@@ -9,6 +9,7 @@ namespace Mu3Assist
         public bool ShowFPS {get; private set; }
         
         // [Cheat]
+        public bool FastSkip {get; private set; }
         public bool UnlockMaster { get; private set; }
         public bool UnlockEvent { get; private set; }
         public bool UnlockMusic { get; private set; }
@@ -25,6 +26,7 @@ namespace Mu3Assist
             ShowFPS = iniFile.GetBool("Common", "ShowFPS", false);
             
             // [Cheat]
+            FastSkip = iniFile.GetBool("Cheat", "FastSkip", false);
             UnlockMaster = iniFile.GetBool("Cheat", "UnlockMaster", false);
             UnlockEvent = iniFile.GetBool("Cheat", "UnlockEvent", false);
             UnlockMusic = iniFile.GetBool("Cheat", "UnlockMusic", false);

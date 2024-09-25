@@ -46,6 +46,7 @@ namespace Mu3Assist
             if (Config.InfinityTimer) Patch(typeof(InfinityTimer));
             
             // [Cheat]
+            if (Config.FastSkip) Patch(typeof(FastSkip));
             if (Config.UnlockMaster) Patch(typeof(UnlockMaster));
             if (Config.UnlockEvent) Patch(typeof(UnlockEvent));
             if (Config.UnlockMusic) Patch(typeof(UnlockMusic));
