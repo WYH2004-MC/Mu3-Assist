@@ -6,6 +6,7 @@ namespace Mu3Assist
     {
         // [Common]
         public bool InfinityTimer {get; private set; }
+        public bool SkipWarningScreen {get; private set; }
         public bool ShowFPS {get; private set; }
         
         // [Cheat]
@@ -24,6 +25,7 @@ namespace Mu3Assist
             
             // [Common]
             InfinityTimer = iniFile.GetBool("Common", "InfinityTimer", false);
+            SkipWarningScreen = iniFile.GetBool("Common", "SkipWarningScreen", false);
             ShowFPS = iniFile.GetBool("Common", "ShowFPS", false);
             
             // [Cheat]

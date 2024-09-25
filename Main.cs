@@ -44,6 +44,7 @@ namespace Mu3Assist
             //Patch
             // [Common]
             if (Config.InfinityTimer) Patch(typeof(InfinityTimer));
+            if (Config.SkipWarningScreen) Patch(typeof(SkipWarningScreen));
             
             // [Cheat]
             if (Config.FastSkip) Patch(typeof(FastSkip));
