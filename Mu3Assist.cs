@@ -1,5 +1,8 @@
 ﻿using System;
 using MelonLoader;
+using Mu3_Assist.Cheat;
+using Mu3_Assist.Common;
+using Mu3_Assist.Fix;
 using Mu3_Assist.Config;
 
 namespace Mu3_Assist
@@ -22,7 +25,20 @@ namespace Mu3_Assist
             PrintLogo();
             var configManager = new ConfigManager<AssistConfig>($"./{BuildInfo.Name}/config.yml");
             Config = configManager.GetConfig();
-            MelonLogger.Msg(Config.Common.Test);
+            
+            // Future patch
+            // Cheat future
+            if (Config.Cheat.UnlockEvent) Patch(typeof(UnlockEvent));
+            if (Config.Cheat.UnlockMusic) Patch(typeof(UnlockMusic));
+            if (Config.Cheat.UnlockMaster) Patch(typeof(UnlockMaster));
+            if (Config.Cheat.FastSkip) Patch(typeof(FastSkip));
+            if (Config.Cheat.FastRestart) Patch(typeof(FastRestart));
+            // Common future
+            if (Config.Common.InfinityTimer) Patch(typeof(InfinityTimer));
+            if (Config.Common.SkipWarningScreen) Patch(typeof(SkipWarningScreen));
+            // Fix future
+            if (Config.Fix.DisableEncryption) Patch(typeof(DisableEncryption));
+            
             MelonLogger.Msg("Loading completed");
         }
 

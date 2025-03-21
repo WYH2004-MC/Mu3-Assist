@@ -25,15 +25,21 @@ namespace Mu3_Assist.Config
                 {
                     _config = new T();
                     SaveConfig();
-                    MelonLogger.Msg($"Create Default Config {_configPath}");
+                    MelonLogger.Msg($"Create Default Config '{_configPath}' ");
                     return;
                 }
-                
+
                 LoadConfig();
+            }
+            catch (YamlDotNet.Core.YamlException ex)
+            {
+                MelonLogger.Error($"Load Config '{_configPath}' Failed: \n{ex.Message}");
+                MelonLogger.Warning($"Your Config is not valid, please delete it and restart the game.");
+                throw;
             }
             catch (Exception ex)
             {
-                MelonLogger.Error($"Create Config '{_configPath}' Failed: \n{ex.Message}");
+                MelonLogger.Error($"Init Config '{_configPath}' Failed: \n{ex.Message}");
                 throw;
             }
         }

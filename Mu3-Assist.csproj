@@ -34,8 +34,16 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+        <Compile Include="Cheat\FastRestart.cs" />
+        <Compile Include="Cheat\FastSkip.cs" />
+        <Compile Include="Cheat\UnlockEvent.cs" />
+        <Compile Include="Cheat\UnlockMaster.cs" />
+        <Compile Include="Cheat\UnlockMusic.cs" />
+        <Compile Include="Common\InfinityTimer.cs" />
+        <Compile Include="Common\SkipWarningScreen.cs" />
         <Compile Include="Config\AssistConfig.cs" />
         <Compile Include="Config\ConfigManager.cs" />
+        <Compile Include="Fix\DisableEncryption.cs" />
         <Compile Include="Mu3Assist.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
