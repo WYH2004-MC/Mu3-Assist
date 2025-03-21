@@ -4,3 +4,6 @@ output/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+/Libs/AMDaemon.NET.dll
+/Libs/Assembly-CSharp.dll
+/Libs/Assembly-CSharp-firstpass.dll

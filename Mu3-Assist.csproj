@@ -10,7 +10,7 @@
         <AppDesignerFolder>Properties</AppDesignerFolder>
         <RootNamespace>Mu3_Assist</RootNamespace>
         <AssemblyName>Mu3_Assist</AssemblyName>
-        <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+        <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
         <GenerateNamespacePadding>true</GenerateNamespacePadding>
     </PropertyGroup>
@@ -53,11 +53,88 @@
         <Compile Include="Properties\AssemblyInfo.cs"/>
     </ItemGroup>
     <ItemGroup>
+      <None Include="App.config" />
       <None Include="packages.config" />
     </ItemGroup>
     <ItemGroup>
       <Content Include=".gitignore" />
       <Content Include="Libs\0Harmony.dll" />
+      <Content Include="Libs\AMDaemon.NET.dll" />
+      <Content Include="Libs\Assembly-CSharp-firstpass.dll" />
+      <Content Include="Libs\Assembly-CSharp.dll" />
+      <Content Include="Libs\Mono.Posix.dll" />
+      <Content Include="Libs\Mono.Security.dll" />
+      <Content Include="Libs\mscorlib.dll" />
+      <Content Include="Libs\System.Configuration.dll" />
+      <Content Include="Libs\System.Core.dll" />
+      <Content Include="Libs\System.dll" />
+      <Content Include="Libs\System.Drawing.dll" />
+      <Content Include="Libs\System.Security.dll" />
+      <Content Include="Libs\System.Xml.dll" />
+      <Content Include="Libs\TextMeshPro.dll" />
+      <Content Include="Libs\UnityEngine.dll" />
+      <Content Include="Libs\UnityEngine.Networking.dll" />
+      <Content Include="Libs\UnityEngine.UI.dll" />
+      <Content Include="Libs\zxing.unity.dll" />
+    </ItemGroup>
+    <ItemGroup>
+      <Reference Include="0Harmony">
+        <HintPath>Libs\0Harmony.dll</HintPath>
+      </Reference>
+      <Reference Include="AMDaemon.NET">
+        <HintPath>Libs\AMDaemon.NET.dll</HintPath>
+      </Reference>
+      <Reference Include="Assembly-CSharp">
+        <HintPath>Libs\Assembly-CSharp.dll</HintPath>
+      </Reference>
+      <Reference Include="Assembly-CSharp-firstpass">
+        <HintPath>Libs\Assembly-CSharp-firstpass.dll</HintPath>
+      </Reference>
+      <Reference Include="MelonLoader, Version=0.6.4.0, Culture=neutral, processorArchitecture=MSIL">
+        <HintPath>packages\LavaGang.MelonLoader.0.6.4\lib\net35\MelonLoader.dll</HintPath>
+      </Reference>
+      <Reference Include="Mono.Posix">
+        <HintPath>Libs\Mono.Posix.dll</HintPath>
+      </Reference>
+      <Reference Include="Mono.Security">
+        <HintPath>Libs\Mono.Security.dll</HintPath>
+      </Reference>
+      <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+        <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net35\Newtonsoft.Json.dll</HintPath>
+      </Reference>
+      <Reference Include="System">
+        <HintPath>Libs\System.dll</HintPath>
+      </Reference>
+      <Reference Include="System.Configuration">
+        <HintPath>Libs\System.Configuration.dll</HintPath>
+      </Reference>
+      <Reference Include="System.Core">
+        <HintPath>Libs\System.Core.dll</HintPath>
+      </Reference>
+      <Reference Include="System.Drawing">
+        <HintPath>Libs\System.Drawing.dll</HintPath>
+      </Reference>
+      <Reference Include="System.Security">
+        <HintPath>Libs\System.Security.dll</HintPath>
+      </Reference>
+      <Reference Include="System.Xml">
+        <HintPath>Libs\System.Xml.dll</HintPath>
+      </Reference>
+      <Reference Include="TextMeshPro">
+        <HintPath>Libs\TextMeshPro.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine">
+        <HintPath>Libs\UnityEngine.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.Networking">
+        <HintPath>Libs\UnityEngine.Networking.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.UI">
+        <HintPath>Libs\UnityEngine.UI.dll</HintPath>
+      </Reference>
+      <Reference Include="zxing.unity">
+        <HintPath>Libs\zxing.unity.dll</HintPath>
+      </Reference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
