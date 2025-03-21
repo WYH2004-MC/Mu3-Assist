@@ -1,0 +1,73 @@
+﻿using System;
+using System.IO;
+using MelonLoader;
+using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.NamingConventions;
+
+namespace Mu3_Assist.Config
+{
+    public class ConfigManager<T> where T : new()
+    {
+        private readonly string _configPath;
+        private T _config;
+        
+        public ConfigManager(string configPath = "config.json")
+        {
+            _configPath = configPath;
+            InitConfig();
+        }
+
+        private void InitConfig()
+        {
+            try
+            {
+                if (!File.Exists(_configPath))
+                {
+                    _config = new T();
+                    SaveConfig();
+                    MelonLogger.Msg($"Create Default Config {_configPath}");
+                    return;
+                }
+                
+                LoadConfig();
+            }
+            catch (Exception ex)
+            {
+                MelonLogger.Error($"Create Config '{_configPath}' Failed: \n{ex.Message}");
+                throw;
+            }
+        }
+
+        public T GetConfig()
+        {
+            if (_config == null)
+            {
+                throw new InvalidOperationException("Configuration is not initialized.");
+            }
+            return _config;
+        }
+
+        public void SaveConfig()
+        {
+            var directory = Path.GetDirectoryName(_configPath);
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+            var serializer = new SerializerBuilder()
+                .WithNamingConvention(CamelCaseNamingConvention.Instance)
+                .Build();
+            var yaml = serializer.Serialize(_config);
+            File.WriteAllText(_configPath, yaml);
+        }
+
+        private void LoadConfig()
+        {
+            var deserializer = new DeserializerBuilder()
+                .WithNamingConvention(CamelCaseNamingConvention.Instance)
+                .Build();
+            var yaml = File.ReadAllText(_configPath);
+            _config = deserializer.Deserialize<T>(yaml);
+        }
+    }
+}

@@ -1,6 +1,6 @@
 ﻿using System;
-using System.IO;
 using MelonLoader;
+using Mu3_Assist.Config;
 
 namespace Mu3_Assist
 {
@@ -16,10 +16,13 @@ namespace Mu3_Assist
     
     public class Mu3Assist : MelonMod
     {
+        public AssistConfig Config;
         public override void OnInitializeMelon()
         {
             PrintLogo();
-            
+            var configManager = new ConfigManager<AssistConfig>($"./{BuildInfo.Name}/config.yml");
+            Config = configManager.GetConfig();
+            MelonLogger.Msg(Config.Common.Test);
             MelonLogger.Msg("Loading completed");
         }
 
