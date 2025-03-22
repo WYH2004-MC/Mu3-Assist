@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using HarmonyLib;
 using MelonLoader;
 using Mu3_Assist.Cheat;
@@ -8,6 +9,8 @@ using Mu3_Assist.Config;
 using MU3.AM;
 using MU3.Sys;
 using MU3.Util;
+using UnityEngine;
+using Path = System.IO.Path;
 
 namespace Mu3_Assist
 {
@@ -36,18 +39,22 @@ namespace Mu3_Assist
             var configManager = new ConfigManager<AssistConfig>($"./{BuildInfo.Name}/config.yml");
             Config = configManager.GetConfig();
             
-            // Future patch
-            // Cheat future
+            // Unity Logger
+            if(File.Exists($"./{BuildInfo.Name}/Unity.log")) File.WriteAllText($"./{BuildInfo.Name}/Unity.log", "");
+            Application.logMessageReceived += OnLogMessageReceived;
+            MelonLogger.Msg("Unity Logger Initialize Finished.");
+            
+            // Cheat
             if (Config.Cheat.UnlockEvent) Patch(typeof(UnlockEvent));
             if (Config.Cheat.UnlockMusic) Patch(typeof(UnlockMusic));
             if (Config.Cheat.UnlockMaster) Patch(typeof(UnlockMaster));
             if (Config.Cheat.FastSkip) Patch(typeof(FastSkip));
             if (Config.Cheat.FastRestart) Patch(typeof(FastRestart));
-            // Common future
+            // Common
             if (Config.Common.InfinityTimer) Patch(typeof(InfinityTimer));
             if (Config.Common.SkipWarningScreen) Patch(typeof(SkipWarningScreen));
             if (Config.Common.SkipInformationScreen) Patch(typeof(SkipInformationScreen));
-            // Fix future
+            // Fix
             if (Config.Fix.DisableEncryption) Patch(typeof(DisableEncryption));
             
             MelonLogger.Msg("Loading completed");
@@ -86,6 +93,14 @@ namespace Mu3_Assist
                             "\r\n                                                    " +
                             "\r\n=====================================================" +
                             $"\r\n Version: {BuildInfo.Version}     Author: {BuildInfo.Author}");
+        }
+
+        private void OnLogMessageReceived(string condition, string stackTrace, LogType type)
+        {
+            string logString = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] [{type}] {condition}";
+            if (string.IsNullOrEmpty(stackTrace)) logString += $"\n{stackTrace}";
+            
+            File.AppendAllText($"{BuildInfo.Name}/Unity.log",logString);
         }
         
         [HarmonyPatch(typeof(AMManager),"Execute_WaitAMDaemonReady")]
