@@ -1,9 +1,13 @@
 ﻿using System;
+using HarmonyLib;
 using MelonLoader;
 using Mu3_Assist.Cheat;
 using Mu3_Assist.Common;
 using Mu3_Assist.Fix;
 using Mu3_Assist.Config;
+using MU3.AM;
+using MU3.Sys;
+using MU3.Util;
 
 namespace Mu3_Assist
 {
@@ -20,9 +24,15 @@ namespace Mu3_Assist
     public class Mu3Assist : MelonMod
     {
         public AssistConfig Config;
+        public static VersionNo VersionNo;
+
+        private static readonly HarmonyLib.Harmony harmonyInstance = new HarmonyLib.Harmony("Mu3Assist");
+            
         public override void OnInitializeMelon()
         {
             PrintLogo();
+            harmonyInstance.PatchAll();
+            // ConfigManager Initialize
             var configManager = new ConfigManager<AssistConfig>($"./{BuildInfo.Name}/config.yml");
             Config = configManager.GetConfig();
             
@@ -36,6 +46,7 @@ namespace Mu3_Assist
             // Common future
             if (Config.Common.InfinityTimer) Patch(typeof(InfinityTimer));
             if (Config.Common.SkipWarningScreen) Patch(typeof(SkipWarningScreen));
+            if (Config.Common.SkipInformationScreen) Patch(typeof(SkipInformationScreen));
             // Fix future
             if (Config.Fix.DisableEncryption) Patch(typeof(DisableEncryption));
             
@@ -76,6 +87,21 @@ namespace Mu3_Assist
                             "\r\n=====================================================" +
                             $"\r\n Version: {BuildInfo.Version}     Author: {BuildInfo.Author}");
         }
-
+        
+        [HarmonyPatch(typeof(AMManager),"Execute_WaitAMDaemonReady")]
+        private class AMDaemonReady
+        {
+            private static bool _amDaemonReady = false;
+            private static void Postfix()
+            {
+                if (!_amDaemonReady && AMManager.instance.isReady)
+                {
+                    VersionNo = SingletonStateMachine<AMManager, AMManager.EState>.instance.versionNo;
+                    MelonLogger.Msg($"AMDaemon Initialize finished");
+                    MelonLogger.Msg($"AMDaemon Get Version: {VersionNo.majorNo}.{VersionNo.minorNo}.{VersionNo.releaseNo} ({VersionNo.versionString})");
+                    _amDaemonReady = true;
+                }
+            }
+        }
     }
 }

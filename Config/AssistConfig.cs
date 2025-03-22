@@ -19,6 +19,7 @@
         {
             public bool InfinityTimer { get; set; } = false;
             public bool SkipWarningScreen { get; set; } = false;
+            public bool SkipInformationScreen { get; set; } = false;
         }
         
         public class FixConfig
