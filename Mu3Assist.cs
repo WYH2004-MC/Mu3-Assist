@@ -56,6 +56,7 @@ namespace Mu3_Assist
             if (Config.Common.SkipInformationScreen) Patch(typeof(SkipInformationScreen));
             // Fix
             if (Config.Fix.DisableEncryption) Patch(typeof(DisableEncryption));
+            if (Config.Fix.DisableReboot) Patch(typeof(DisableReboot));
             
             MelonLogger.Msg("Loading completed");
         }

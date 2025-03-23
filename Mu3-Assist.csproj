@@ -45,6 +45,7 @@
         <Compile Include="Config\AssistConfig.cs" />
         <Compile Include="Config\ConfigManager.cs" />
         <Compile Include="Fix\DisableEncryption.cs" />
+        <Compile Include="Fix\DisableReboot.cs" />
         <Compile Include="Mu3Assist.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
