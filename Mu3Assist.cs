@@ -42,7 +42,7 @@ namespace Mu3_Assist
             // Unity Logger
             if(File.Exists($"./{BuildInfo.Name}/Unity.log")) File.WriteAllText($"./{BuildInfo.Name}/Unity.log", "");
             Application.logMessageReceived += OnLogMessageReceived;
-            MelonLogger.Msg("Unity Logger Initialize Finished.");
+            MelonLogger.Msg("Unity Logger Initialize Finished");
             
             // Cheat
             if (Config.Cheat.UnlockEvent) Patch(typeof(UnlockEvent));
@@ -57,6 +57,7 @@ namespace Mu3_Assist
             // Fix
             if (Config.Fix.DisableEncryption) Patch(typeof(DisableEncryption));
             if (Config.Fix.DisableReboot) Patch(typeof(DisableReboot));
+            if (Config.Fix.FixTestMode) Patch(typeof(FixTestMode));
             
             MelonLogger.Msg("Loading completed");
         }

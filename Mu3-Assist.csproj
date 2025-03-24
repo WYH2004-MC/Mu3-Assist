@@ -46,6 +46,7 @@
         <Compile Include="Config\ConfigManager.cs" />
         <Compile Include="Fix\DisableEncryption.cs" />
         <Compile Include="Fix\DisableReboot.cs" />
+        <Compile Include="Fix\FixTestMode.cs" />
         <Compile Include="Mu3Assist.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
@@ -136,6 +137,7 @@
       </Reference>
     </ItemGroup>
     <ItemGroup>
+      <Folder Include="GUI\" />
       <Folder Include="Utils\" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

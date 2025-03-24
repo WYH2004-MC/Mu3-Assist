@@ -26,6 +26,7 @@
         {
             public bool DisableEncryption { get; set; } = false;
             public bool DisableReboot { get; set; } = false;
+            public bool FixTestMode { get; set; } = false;
         }
     }
 }
