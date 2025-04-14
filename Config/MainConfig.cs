@@ -1,6 +1,6 @@
 ﻿namespace Mu3_Assist.Config
 {
-    public class AssistConfig
+    public class MainConfig
     {
         public CheatConfig Cheat { get; set; } = new CheatConfig();
         public CommonConfig Common { get; set; } = new CommonConfig();

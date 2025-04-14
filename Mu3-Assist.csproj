@@ -42,7 +42,7 @@
         <Compile Include="Common\InfinityTimer.cs" />
         <Compile Include="Common\SkipInformationScreen.cs" />
         <Compile Include="Common\SkipWarningScreen.cs" />
-        <Compile Include="Config\AssistConfig.cs" />
+        <Compile Include="Config\MainConfig.cs" />
         <Compile Include="Config\ConfigManager.cs" />
         <Compile Include="Fix\DisableEncryption.cs" />
         <Compile Include="Fix\DisableReboot.cs" />

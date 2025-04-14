@@ -26,7 +26,7 @@ namespace Mu3_Assist
     
     public class Mu3Assist : MelonMod
     {
-        public AssistConfig Config;
+        public MainConfig MainConfig;
         public static VersionNo VersionNo;
 
         private static readonly HarmonyLib.Harmony harmonyInstance = new HarmonyLib.Harmony("Mu3Assist");
@@ -36,8 +36,8 @@ namespace Mu3_Assist
             PrintLogo();
             harmonyInstance.PatchAll();
             // ConfigManager Initialize
-            var configManager = new ConfigManager<AssistConfig>($"./{BuildInfo.Name}/config.yml");
-            Config = configManager.GetConfig();
+            var configManager = new ConfigManager<MainConfig>($"./{BuildInfo.Name}/config.yml");
+            MainConfig = configManager.GetConfig();
             
             // Unity Logger
             if(File.Exists($"./{BuildInfo.Name}/Unity.log")) File.WriteAllText($"./{BuildInfo.Name}/Unity.log", "");
@@ -45,19 +45,19 @@ namespace Mu3_Assist
             MelonLogger.Msg("Unity Logger Initialize Finished");
             
             // Cheat
-            if (Config.Cheat.UnlockEvent) Patch(typeof(UnlockEvent));
-            if (Config.Cheat.UnlockMusic) Patch(typeof(UnlockMusic));
-            if (Config.Cheat.UnlockMaster) Patch(typeof(UnlockMaster));
-            if (Config.Cheat.FastSkip) Patch(typeof(FastSkip));
-            if (Config.Cheat.FastRestart) Patch(typeof(FastRestart));
+            if (MainConfig.Cheat.UnlockEvent) Patch(typeof(UnlockEvent));
+            if (MainConfig.Cheat.UnlockMusic) Patch(typeof(UnlockMusic));
+            if (MainConfig.Cheat.UnlockMaster) Patch(typeof(UnlockMaster));
+            if (MainConfig.Cheat.FastSkip) Patch(typeof(FastSkip));
+            if (MainConfig.Cheat.FastRestart) Patch(typeof(FastRestart));
             // Common
-            if (Config.Common.InfinityTimer) Patch(typeof(InfinityTimer));
-            if (Config.Common.SkipWarningScreen) Patch(typeof(SkipWarningScreen));
-            if (Config.Common.SkipInformationScreen) Patch(typeof(SkipInformationScreen));
+            if (MainConfig.Common.InfinityTimer) Patch(typeof(InfinityTimer));
+            if (MainConfig.Common.SkipWarningScreen) Patch(typeof(SkipWarningScreen));
+            if (MainConfig.Common.SkipInformationScreen) Patch(typeof(SkipInformationScreen));
             // Fix
-            if (Config.Fix.DisableEncryption) Patch(typeof(DisableEncryption));
-            if (Config.Fix.DisableReboot) Patch(typeof(DisableReboot));
-            if (Config.Fix.FixTestMode) Patch(typeof(FixTestMode));
+            if (MainConfig.Fix.DisableEncryption) Patch(typeof(DisableEncryption));
+            if (MainConfig.Fix.DisableReboot) Patch(typeof(DisableReboot));
+            if (MainConfig.Fix.FixTestMode) Patch(typeof(FixTestMode));
             
             MelonLogger.Msg("Loading completed");
         }

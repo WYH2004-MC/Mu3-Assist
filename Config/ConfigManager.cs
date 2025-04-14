@@ -11,7 +11,7 @@ namespace Mu3_Assist.Config
         private readonly string _configPath;
         private T _config;
         
-        public ConfigManager(string configPath = "config.json")
+        public ConfigManager(string configPath = "config.yml")
         {
             _configPath = configPath;
             InitConfig();
